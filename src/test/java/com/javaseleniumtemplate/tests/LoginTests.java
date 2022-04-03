@@ -11,22 +11,34 @@ public class LoginTests extends TestBase {
 
     //Tests
     @Test
-    public void efetuarLoginComSucesso(){
-
-        //Objects instances
+    public void efetuarLoginComSucesso() {
         loginPage = new LoginPage();
 
-        //Parameteres
         String usuario = "agatha.franca";
         String senha = "L@3f4519";
         String textoEsperado = "agatha.franca";
 
-        //Test
         loginPage.preenhcerUsuario(usuario);
         loginPage.preencherSenha(senha);
         loginPage.clicarEmLogin();
         loginPage.navegarParaPaginaInicial();
 
-        Assert.assertTrue(loginPage.capturarUsuarioLogado().contains(textoEsperado));
+        Assert.assertTrue(loginPage.retornaUsuarioLogado().contains(textoEsperado));
+    }
+
+    @Test
+    public void efetuarLoginInvalido() {
+        loginPage = new LoginPage();
+
+        String usuario = "emailinexistente@email.com";
+        String senha = "123456";
+        String mensagemErroEsperada = "Your account may be disabled or blocked or the username/password you entered is incorrect.";
+
+        loginPage.preenhcerUsuario(usuario);
+        loginPage.preencherSenha(senha);
+        loginPage.clicarEmLogin();
+
+        Assert.assertTrue(loginPage.retornaMensagemDeErroLogin().contains(mensagemErroEsperada));
+
     }
 }
