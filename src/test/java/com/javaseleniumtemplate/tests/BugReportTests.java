@@ -12,16 +12,21 @@ public class BugReportTests extends TestBase {
     public void cadastrarNovaOcorrenciaComSucesso() {
         bugReportPage = new BugReportPage();
 
-        String resumo = "" ;
-        String descricao = "" ;
-        String mensagemEsperada = "Operação realizada com sucesso." ;
+        String resumo = "Incorrect error message";
+        String descricao = "The message displayed when logging in is not in accordance with the implementation requirement.";
+        String mensagemEsperada = "Operation successful.";
 
+        bugReportPage.clicarNoLinkReportarCaso();
+        bugReportPage.navegarParaPaginaSelecaoDeProjeto();
+        bugReportPage.selecionarProjeto();
+        bugReportPage.clicarEmSelecionarProjeto();
+        bugReportPage.navegarParaPaginaReportarBug();
         bugReportPage.selecionarCategoria();
         bugReportPage.preencherResumo(resumo);
         bugReportPage.preencherDescricao(descricao);
         bugReportPage.clicarEmEnviarRelatorio();
 
-        Assert.assertTrue(bugReportPage.retornaMensagemSucessoReport().contains(mensagemEsperada));
+        Assert.assertTrue(bugReportPage.retornaMensagemSucessoParaReportCriado().contains(mensagemEsperada));
     }
 
 }

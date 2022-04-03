@@ -6,29 +6,30 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-//import org.testng.ITestResult;
-//import org.testng.annotations.*;
-
+import com.javaseleniumtemplate.flows.LoginFlows;
 
 public class TestBase {
     @BeforeClass
-    public static void beforeSuite(){
+    public static void beforeSuite() {
         new GlobalParameters();
     }
 
     @Before
-    public void beforeTest(){
+    public void beforeTest() {
         DriverUtils.createInstance();
         DriverUtils.INSTANCE.manage().window().maximize();
         DriverUtils.INSTANCE.navigate().to(GlobalParameters.URL_DEFAULT);
+
+        LoginFlows loginFlows = new LoginFlows();
+        loginFlows.efetuarLogin(GlobalParameters.USUARIO_GERAL, GlobalParameters.SENHA_GERAL);
     }
 
     @After
-    public void afterTest(){
+    public void afterTest() {
         DriverUtils.quitInstace();
     }
 
     @AfterClass
-    public static void afterSuite(){
+    public static void afterSuite() {
     }
 }

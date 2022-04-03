@@ -16,15 +16,15 @@ import java.util.Date;
 
 public class Utils {
 
-    public static String getNowDate(String mask){
+    public static String getNowDate(String mask) {
         DateFormat dateFormat = new SimpleDateFormat(mask);
         Date date = new Date();
         return dateFormat.format(date);
     }
 
     public static String getFileContent(String filePath) {
-        BufferedReader br=null;
-        StringBuilder sb=null;
+        BufferedReader br = null;
+        StringBuilder sb = null;
         try {
             br = new BufferedReader(new FileReader(filePath));
             sb = new StringBuilder();
@@ -38,7 +38,7 @@ public class Utils {
 
             br.close();
 
-        }  catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -15,28 +15,27 @@ public class PageBase {
     protected JavascriptExecutor javaScriptExecutor = null;
 
     //Construtor
-    public PageBase(){
-        wait = new WebDriverWait (DriverUtils.INSTANCE, GlobalParameters.TIMEOUT_DEFAULT);
+    public PageBase() {
+        wait = new WebDriverWait(DriverUtils.INSTANCE, GlobalParameters.TIMEOUT_DEFAULT);
         driver = DriverUtils.INSTANCE;
         javaScriptExecutor = (JavascriptExecutor) driver;
     }
 
     //Custom Actions
-    private void waitUntilPageReady(){
+    private void waitUntilPageReady() {
         StopWatch timeOut = new StopWatch();
         timeOut.start();
 
-        while (timeOut.getTime() <= GlobalParameters.TIMEOUT_DEFAULT)
-        {
+        while (timeOut.getTime() <= GlobalParameters.TIMEOUT_DEFAULT) {
             String documentState = javaScriptExecutor.executeScript("return document.readyState").toString();
-            if (documentState.equals("complete")){
+            if (documentState.equals("complete")) {
                 timeOut.stop();
                 break;
             }
         }
     }
 
-    protected WebElement waitForElement(By locator){
+    protected WebElement waitForElement(By locator) {
         waitUntilPageReady();
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         WebElement element = driver.findElement(locator);
@@ -44,33 +43,24 @@ public class PageBase {
         return element;
     }
 
-    protected void click(By locator){
+    protected void click(By locator) {
         WebDriverException possibleWebDriverException = null;
         StopWatch timeOut = new StopWatch();
         timeOut.start();
 
-        while (timeOut.getTime() <= GlobalParameters.TIMEOUT_DEFAULT)
-        {
+        while (timeOut.getTime() <= GlobalParameters.TIMEOUT_DEFAULT) {
             WebElement element = null;
 
-            try
-            {
+            try {
                 element = waitForElement(locator);
                 element.click();
                 timeOut.stop();
                 return;
-            }
-
-            catch (StaleElementReferenceException e)
-            {
+            } catch (StaleElementReferenceException e) {
                 continue;
-            }
-
-            catch (WebDriverException e)
-            {
+            } catch (WebDriverException e) {
                 possibleWebDriverException = e;
-                if (e.getMessage().contains("Other element would receive the click"))
-                {
+                if (e.getMessage().contains("Other element would receive the click")) {
                     continue;
                 }
 
@@ -80,58 +70,59 @@ public class PageBase {
 
         try {
             throw new Exception(possibleWebDriverException);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    protected void sendKeys(By locator, String text){
+    protected void sendKeys(By locator, String text) {
         waitForElement(locator).sendKeys(text);
     }
 
-    protected void sendKeysWithoutWaitVisible(By locator, String text){
+    protected void sendKeysWithoutWaitVisible(By locator, String text) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         WebElement element = driver.findElement(locator);
         element.sendKeys(text);
     }
 
-    protected void comboBoxSelectByVisibleText(By locator, String text){
+    protected void comboBoxSelectByVisibleText(By locator, String text) {
         Select comboBox = new Select(waitForElement(locator));
         comboBox.selectByVisibleText(text);
     }
 
-    protected String getText(By locator){
+    protected String getText(By locator) {
         String text = waitForElement(locator).getText();
         return text;
     }
 
-    protected String getValue(By locator){
+    protected String getValue(By locator) {
         String text = waitForElement(locator).getAttribute("value");
         return text;
     }
 
     //Default actions
-    public void refresh(){
+    public void refresh() {
         DriverUtils.INSTANCE.navigate().refresh();
     }
 
-    public void navigateTo(String url){
+    public void navigateTo(String url) {
         DriverUtils.INSTANCE.navigate().to(url);
     }
 
-    public void openNewTab(){
+    public void openNewTab() {
         javaScriptExecutor.executeScript("window.open();");
     }
-    public void closeTab(){
+
+    public void closeTab() {
         driver.close();
     }
 
-    public String getTitle(){
+    public String getTitle() {
         String title = driver.getTitle();
         return title;
     }
 
-    public String getURL(){
+    public String getURL() {
         String url = driver.getCurrentUrl();
         return url;
     }

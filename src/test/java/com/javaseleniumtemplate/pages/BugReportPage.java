@@ -5,18 +5,50 @@ import org.openqa.selenium.By;
 
 public class BugReportPage extends PageBase {
 
-    By resumeField = By.name("summary");
+    By reportIssueLink = By.linkText("Report Issue");
+    By selectProjectButton = By.xpath("//input[@value='Select Project']");
+    By summaryField = By.name("summary");
     By descriptionTextArea = By.name("description");
-    By sendReportButton = By.xpath("//input[@value='Enviar Relatório']");
-    By successMessageLabel = By.xpath("//div[contains(.,'Operação realizada com sucesso.')]");
+    By sendReportButton = By.xpath("//input[@value='Submit Report']");
+    By successMessageLabel = By.xpath("//div[contains(.,'Operation successful.')]");
 
-    public void selecionarCategoria() { comboBoxSelectByVisibleText(By.name("category_id"), "[Todos os Projetos] General"); }
+    public void clicarNoLinkReportarCaso() {
+        click(reportIssueLink);
+    }
 
-    public void preencherResumo(String resumo) { sendKeys(resumeField, resumo); }
+    public void navegarParaPaginaSelecaoDeProjeto() {
+        driver.navigate().to("https://mantis-prova.base2.com.br/login_select_proj_page.php?ref=bug_report_page.php");
+    }
 
-    public void preencherDescricao(String descricao) { sendKeys(descriptionTextArea, descricao); }
+    public void selecionarProjeto() {
+        comboBoxSelectByVisibleText(By.xpath("//tr[contains(.,'Choose Project')]//select"), "TesteTati");
+    }
 
-    public void clicarEmEnviarRelatorio() { click(sendReportButton); }
+    public void clicarEmSelecionarProjeto() {
+        click(selectProjectButton);
+    }
 
-    public String retornaMensagemSucessoReport() { return getText(successMessageLabel); }
+    public void navegarParaPaginaReportarBug() {
+        driver.navigate().to("https://mantis-prova.base2.com.br/bug_report_page.php");
+    }
+
+    public void selecionarCategoria() {
+        comboBoxSelectByVisibleText(By.name("category_id"), "[All Projects] General");
+    }
+
+    public void preencherResumo(String resumo) {
+        sendKeys(summaryField, resumo);
+    }
+
+    public void preencherDescricao(String descricao) {
+        sendKeys(descriptionTextArea, descricao);
+    }
+
+    public void clicarEmEnviarRelatorio() {
+        click(sendReportButton);
+    }
+
+    public String retornaMensagemSucessoParaReportCriado() {
+        return getText(successMessageLabel);
+    }
 }
