@@ -11,22 +11,22 @@ public class LoginTests extends TestBase {
 
     //Tests
     @Test
-    public void efetuarLoginEmailInvalido(){
+    public void efetuarLoginComSucesso(){
 
         //Objects instances
         loginPage = new LoginPage();
 
         //Parameteres
-        String usuario = "emailerrado@email.com";
-        String senha = "123456";
-        String mensagemErroEsperada = "E-mail ou senha inv";
+        String usuario = "agatha.franca";
+        String senha = "L@3f4519";
+        String textoEsperado = "agatha.franca";
 
         //Test
-        loginPage.clicarEmAceitarCookies();
         loginPage.preenhcerUsuario(usuario);
         loginPage.preencherSenha(senha);
         loginPage.clicarEmLogin();
+        loginPage.navegarParaPaginaInicial();
 
-        Assert.assertTrue(loginPage.retornaMensagemErroLogin().contains(mensagemErroEsperada));
+        Assert.assertTrue(loginPage.capturarUsuarioLogado().contains(textoEsperado));
     }
 }
