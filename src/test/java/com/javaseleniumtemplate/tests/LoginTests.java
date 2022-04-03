@@ -39,6 +39,5 @@ public class LoginTests extends TestBase {
         loginPage.clicarEmLogin();
 
         Assert.assertTrue(loginPage.retornaMensagemDeErroLogin().contains(mensagemErroEsperada));
-
     }
 }

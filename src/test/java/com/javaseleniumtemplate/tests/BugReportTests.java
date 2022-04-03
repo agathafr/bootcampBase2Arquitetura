@@ -44,5 +44,4 @@ public class BugReportTests extends TestBase {
 
         Assert.assertTrue(bugReportPage.retornaMenssagemErroFaltaCampoObrigatorio().contains(mensagemEsperadaFaltaCampoObrigatorio));
     }
-
 }
