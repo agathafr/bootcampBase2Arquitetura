@@ -11,6 +11,7 @@ public class BugReportPage extends PageBase {
     By descriptionTextArea = By.name("description");
     By sendReportButton = By.xpath("//input[@value='Submit Report']");
     By successMessageLabel = By.xpath("//div[contains(.,'Operation successful.')]");
+    By errorMessageLabel = By.xpath("//p[contains(.,'A necessary field \"Summary\" was empty. Please recheck your inputs.')]");
 
     public void clicarNoLinkReportarCaso() {
         click(reportIssueLink);
@@ -48,7 +49,11 @@ public class BugReportPage extends PageBase {
         click(sendReportButton);
     }
 
-    public String retornaMensagemSucessoParaReportCriado() {
+    public String retornaMensagemSucessoReportCriado() {
         return getText(successMessageLabel);
+    }
+
+    public String retornaMenssagemErroFaltaCampoObrigatorio() {
+        return getText(errorMessageLabel);
     }
 }
