@@ -23,7 +23,7 @@ public class BugReportPage extends PageBase {
     }
 
     public void selecionarProjeto(String projeto) {
-        comboBoxSelectByVisibleText(By.xpath("//tr[contains(.,'Choose Project')]//select"), projeto);
+        comboBoxSelectByVisibleText(By.name("project_id"), projeto);
     }
 
     public void clicarEmSelecionarProjeto() {
