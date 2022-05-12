@@ -10,7 +10,7 @@ public class LoginPage extends PageBase {
     By passwordField = By.name("password");
     By loginButton = By.xpath("//input[@value=\"Login\"]");
     By loggedUserText = By.xpath("//td[@class=\"login-info-left\"]/span[@class=\"italic\"]");
-    By errorMessageLabel = By.xpath("//font[contains(.,'Your account may be disabled or blocked or the username/password you entered is incorrect.')]");
+    By errorMessageLabel = By.xpath("//body//div[2]//font");
 
     //Actions
     public void preenhcerUsuario(String usuario) {
