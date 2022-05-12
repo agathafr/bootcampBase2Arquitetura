@@ -19,9 +19,6 @@ public class TestBase {
         DriverUtils.createInstance();
         DriverUtils.INSTANCE.manage().window().maximize();
         DriverUtils.INSTANCE.navigate().to(GlobalParameters.URL_DEFAULT);
-
-        LoginFlows loginFlows = new LoginFlows();
-        loginFlows.efetuarLogin(GlobalParameters.USUARIO_GERAL, GlobalParameters.SENHA_GERAL);
     }
 
     @After
