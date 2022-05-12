@@ -1,5 +1,6 @@
 package com.javaseleniumtemplate.pages;
 
+import com.javaseleniumtemplate.GlobalParameters;
 import com.javaseleniumtemplate.bases.PageBase;
 import org.openqa.selenium.By;
 
@@ -13,7 +14,7 @@ public class MyViewPage extends PageBase {
     }
 
     public void navegarParaPaginaVerTodosOsBugs() {
-        driver.navigate().to("https://mantis-prova.base2.com.br/view_all_bug_page.php?filter=11182");
+        driver.navigate().to(GlobalParameters.URL_DEFAULT + "view_all_bug_page.php?filter=11182");
     }
 
     public String retornaNomeDoResponsavelPeloMonitoramento() {

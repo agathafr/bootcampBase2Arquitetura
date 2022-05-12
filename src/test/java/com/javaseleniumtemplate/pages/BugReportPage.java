@@ -1,5 +1,6 @@
 package com.javaseleniumtemplate.pages;
 
+import com.javaseleniumtemplate.GlobalParameters;
 import com.javaseleniumtemplate.bases.PageBase;
 import org.openqa.selenium.By;
 
@@ -18,7 +19,7 @@ public class BugReportPage extends PageBase {
     }
 
     public void navegarParaPaginaSelecaoDeProjeto() {
-        driver.navigate().to("https://mantis-prova.base2.com.br/login_select_proj_page.php?ref=bug_report_page.php");
+        driver.navigate().to(GlobalParameters.URL_DEFAULT + "login_select_proj_page.php?ref=bug_report_page.php");
     }
 
     public void selecionarProjeto() {
@@ -30,7 +31,7 @@ public class BugReportPage extends PageBase {
     }
 
     public void navegarParaPaginaReportarBug() {
-        driver.navigate().to("https://mantis-prova.base2.com.br/bug_report_page.php");
+        driver.navigate().to(GlobalParameters.URL_DEFAULT + "bug_report_page.php");
     }
 
     public void selecionarCategoria() {

@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class GlobalParameters {
+    public static String URL_REPORT_PAGE;
     public static String BROWSER_DEFAULT;
     public static String EXECUTION;
     public static int TIMEOUT_DEFAULT;

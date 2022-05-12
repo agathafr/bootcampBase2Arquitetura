@@ -1,5 +1,6 @@
 package com.javaseleniumtemplate.pages;
 
+import com.javaseleniumtemplate.GlobalParameters;
 import com.javaseleniumtemplate.bases.PageBase;
 import org.openqa.selenium.By;
 
@@ -25,7 +26,7 @@ public class LoginPage extends PageBase {
     }
 
     public void navegarParaPaginaInicial() {
-        driver.navigate().to("https://mantis-prova.base2.com.br/my_view_page.php");
+        driver.navigate().to(GlobalParameters.URL_DEFAULT + "my_view_page.php");
     }
 
     public String retornaUsuarioLogado() {
