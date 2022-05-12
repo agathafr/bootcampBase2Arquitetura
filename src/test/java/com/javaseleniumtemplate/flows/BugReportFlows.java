@@ -12,10 +12,10 @@ public class BugReportFlows {
     public void cadastrarNovaOcorrencia(String resumo, String descricao) {
         bugReportPage.clicarNoLinkReportarCaso();
         bugReportPage.navegarParaPaginaSelecaoDeProjeto();
-        bugReportPage.selecionarProjeto();
+        bugReportPage.selecionarProjeto("TesteTati");
         bugReportPage.clicarEmSelecionarProjeto();
         bugReportPage.navegarParaPaginaReportarBug();
-        bugReportPage.selecionarCategoria();
+        bugReportPage.selecionarCategoria("[All Projects] General");
         bugReportPage.preencherResumo(resumo);
         bugReportPage.preencherDescricao(descricao);
         bugReportPage.clicarEmEnviarRelatorio();

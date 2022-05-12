@@ -23,10 +23,10 @@ public class BugReportTests extends TestBase {
         loginFlows.efetuarLogin(GlobalParameters.USUARIO_GERAL, GlobalParameters.SENHA_GERAL);
         bugReportPage.clicarNoLinkReportarCaso();
         bugReportPage.navegarParaPaginaSelecaoDeProjeto();
-        bugReportPage.selecionarProjeto();
+        bugReportPage.selecionarProjeto("TesteTati");
         bugReportPage.clicarEmSelecionarProjeto();
         bugReportPage.navegarParaPaginaReportarBug();
-        bugReportPage.selecionarCategoria();
+        bugReportPage.selecionarCategoria("[All Projects] General");
         bugReportPage.preencherResumo(resumo);
         bugReportPage.preencherDescricao(descricao);
         bugReportPage.clicarEmEnviarRelatorio();
@@ -44,7 +44,7 @@ public class BugReportTests extends TestBase {
         loginFlows.efetuarLogin(GlobalParameters.USUARIO_GERAL, GlobalParameters.SENHA_GERAL);
         bugReportPage.clicarNoLinkReportarCaso();
         bugReportPage.navegarParaPaginaSelecaoDeProjeto();
-        bugReportPage.selecionarProjeto();
+        bugReportPage.selecionarProjeto("TesteTati");
         bugReportPage.clicarEmSelecionarProjeto();
         bugReportPage.navegarParaPaginaReportarBug();
         bugReportPage.clicarEmEnviarRelatorio();

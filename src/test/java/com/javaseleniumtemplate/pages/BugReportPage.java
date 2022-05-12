@@ -22,8 +22,8 @@ public class BugReportPage extends PageBase {
         driver.navigate().to(GlobalParameters.URL_DEFAULT + "login_select_proj_page.php?ref=bug_report_page.php");
     }
 
-    public void selecionarProjeto() {
-        comboBoxSelectByVisibleText(By.xpath("//tr[contains(.,'Choose Project')]//select"), "TesteTati");
+    public void selecionarProjeto(String projeto) {
+        comboBoxSelectByVisibleText(By.xpath("//tr[contains(.,'Choose Project')]//select"), projeto);
     }
 
     public void clicarEmSelecionarProjeto() {
@@ -34,8 +34,8 @@ public class BugReportPage extends PageBase {
         driver.navigate().to(GlobalParameters.URL_DEFAULT + "bug_report_page.php");
     }
 
-    public void selecionarCategoria() {
-        comboBoxSelectByVisibleText(By.name("category_id"), "[All Projects] General");
+    public void selecionarCategoria(String categoria) {
+        comboBoxSelectByVisibleText(By.name("category_id"), categoria);
     }
 
     public void preencherResumo(String resumo) {
